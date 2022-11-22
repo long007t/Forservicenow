@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>problem</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>ServiceNow for Slack Problem Events</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+	var problemEvent = "x_545827_slack_std.problem_changed";
+	var EVENT_NAMES = new ServiceNowForSlackConstants().getEventNames();
+
+	// handle when problem is created
+	if (current.operation() == 'insert') {
+		gs.eventQueue(problemEvent, current, EVENT_NAMES.created, gs.getUserID());
+	}
+	
+	// handle when problem state is changed
+	if (current.operation() != 'insert' && current.state.changes()) {
+		gs.eventQueue(problemEvent, current, EVENT_NAMES.state, current.state);
+	}
+	
+	// handle when problem priority is changed
+	if (current.operation() != 'insert' && current.priority.changes()) {
+		gs.eventQueue(problemEvent, current, EVENT_NAMES.priority, current.priority);
+	}
+
+	// handle when problem is commented
+	if (current.operation() != 'insert' && current.comments.changes()) {
+		gs.eventQueue(problemEvent, current, EVENT_NAMES.commented, gs.getUserID());
+	}
+	// handle when problem Assignment Group changed
+	if (current.operation() != 'insert' && current.assignment_group.changes()) {
+		gs.eventQueue(problemEvent, current, EVENT_NAMES.assignmentGroup, gs.getUserID());
+	}
+	
+	// handle when problem Assignee changed
+	if (current.operation() != 'insert' && current.assigned_to.changes()) {
+		gs.eventQueue(problemEvent, current, EVENT_NAMES.assignedTo, gs.getUserID());
+	}
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-06-28 08:21:29</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>4354be012f4130101d27c886f699b6cf</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>ServiceNow for Slack Problem Events</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="ServiceNow for Slack Notifications" source="x_545827_slack_std">64c662fa2f3030101d27c886f699b6f7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ServiceNow for Slack Notifications">64c662fa2f3030101d27c886f699b6f7</sys_scope>
+        <sys_update_name>sys_script_4354be012f4130101d27c886f699b6cf</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-08-06 11:24:25</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=4354be012f4130101d27c886f699b6cf"/>
+</record_update>

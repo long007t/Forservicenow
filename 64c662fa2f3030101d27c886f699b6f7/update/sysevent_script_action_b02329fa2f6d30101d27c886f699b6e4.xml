@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_script_action">
+    <sysevent_script_action action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition_script/>
+        <description/>
+        <event_name>x_545827_slack_std.task_changed</event_name>
+        <name>ServiceNow for Slack Task Notify</name>
+        <order>100</order>
+        <script><![CDATA[gs.info("Running ServiceNow for Slack script for task - " + current.sys_class_name.getDisplayValue() + " and subcription - " + event.parm1 + " and record id -" + current.getValue("sys_id"));
+
+var serviceNowForSlackUtils = new ServiceNowForSlackUtils();
+
+// get valid record alert subscriptions
+var recordSubscriptions = serviceNowForSlackUtils.getRecordAlertsSubscriptions(current.sys_class_name, event.parm1, current.getValue("sys_id"));
+while (recordSubscriptions.next()) { 
+	// call endpoint to send record level subscriptions
+	var notificationRecord = serviceNowForSlackUtils.getSlackNotificationRecord(recordSubscriptions, current);
+	gs.info("Calling Slack Api to send record level subscriptions for record - " + JSON.stringify(notificationRecord));
+	var recordResponse = serviceNowForSlackUtils.sendSlackNotification(notificationRecord);
+}]]></script>
+        <synchronous>false</synchronous>
+        <sys_class_name>sysevent_script_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-07-28 09:22:59</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>b02329fa2f6d30101d27c886f699b6e4</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>ServiceNow for Slack Task Notify</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="ServiceNow for Slack Notifications" source="x_545827_slack_std">64c662fa2f3030101d27c886f699b6f7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ServiceNow for Slack Notifications">64c662fa2f3030101d27c886f699b6f7</sys_scope>
+        <sys_update_name>sysevent_script_action_b02329fa2f6d30101d27c886f699b6e4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-08-03 11:44:39</sys_updated_on>
+    </sysevent_script_action>
+</record_update>

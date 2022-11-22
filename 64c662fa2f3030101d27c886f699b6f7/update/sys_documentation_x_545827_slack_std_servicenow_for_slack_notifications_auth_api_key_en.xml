@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="api_key" label="Api Key" language="en" table="x_545827_slack_std_servicenow_for_slack_notifications_auth">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>api_key</element>
+            <help/>
+            <hint/>
+            <label>Api Key</label>
+            <language>en</language>
+            <name>x_545827_slack_std_servicenow_for_slack_notifications_auth</name>
+            <plural>Api Keys</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2021-07-08 07:38:59</sys_created_on>
+            <sys_id>11ab4ad42f1130101d27c886f699b626</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Api Key</sys_name>
+            <sys_package display_value="ServiceNow for Slack Notifications" source="x_545827_slack_std">64c662fa2f3030101d27c886f699b6f7</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="ServiceNow for Slack Notifications">64c662fa2f3030101d27c886f699b6f7</sys_scope>
+            <sys_update_name>sys_documentation_x_545827_slack_std_servicenow_for_slack_notifications_auth_api_key_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2021-07-08 07:38:59</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

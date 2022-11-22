@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_545827_slack_std.ServiceNowForSlackConstants</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>This is a constants class will have be used from other scripts.</description>
+        <name>ServiceNowForSlackConstants</name>
+        <script><![CDATA[var ServiceNowForSlackConstants = Class.create();
+ServiceNowForSlackConstants.prototype = {
+    initialize: function() {
+    },
+	
+	getEventNames: function() {
+		var EVENT_NAMES = {
+			created: "created",
+			state: "state",
+			priority: "priority",
+			commented: "commented",
+			updated: "updated",
+			assignedTo: "assigned_to",
+			assignmentGroup: "assignment_group"
+		};
+		return EVENT_NAMES;		
+	},
+
+    type: 'ServiceNowForSlackConstants'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-06-29 11:44:01</sys_created_on>
+        <sys_id>8268a4e92fcd30101d27c886f699b6e8</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>ServiceNowForSlackConstants</sys_name>
+        <sys_package display_value="ServiceNow for Slack Notifications" source="x_545827_slack_std">64c662fa2f3030101d27c886f699b6f7</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="ServiceNow for Slack Notifications">64c662fa2f3030101d27c886f699b6f7</sys_scope>
+        <sys_update_name>sys_script_include_8268a4e92fcd30101d27c886f699b6e8</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-08-06 11:26:05</sys_updated_on>
+    </sys_script_include>
+</record_update>

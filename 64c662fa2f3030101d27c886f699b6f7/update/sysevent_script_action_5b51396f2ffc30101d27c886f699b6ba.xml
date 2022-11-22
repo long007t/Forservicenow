@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_script_action">
+    <sysevent_script_action action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition_script/>
+        <description/>
+        <event_name>x_545827_slack_std.incident_changed</event_name>
+        <name>ServiceNow for Slack Incident Notify</name>
+        <order>100</order>
+        <script><![CDATA[gs.info("Running ServiceNow for Slack script for incident subcription - " + event.parm1 + " and id -" + current.getValue("sys_id"));
+
+var serviceNowForSlackUtils = new ServiceNowForSlackUtils();
+
+// get valid bulk alert subscriptions
+var bulkSubscriptions = serviceNowForSlackUtils.getBulkAlertsSubscriptions(current.sys_class_name, event.parm1);
+while (bulkSubscriptions.next()) { 
+	// call endpoint to send bulk subscriptions
+	var bulkNotificationRecord = serviceNowForSlackUtils.getSlackNotificationRecord(bulkSubscriptions, current);
+	gs.info("Calling Slack Api to send bulk subscriptions for record - " + JSON.stringify(bulkNotificationRecord));
+	var response = serviceNowForSlackUtils.sendSlackNotification(bulkNotificationRecord);
+}]]></script>
+        <synchronous>false</synchronous>
+        <sys_class_name>sysevent_script_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-06-23 11:47:10</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>5b51396f2ffc30101d27c886f699b6ba</sys_id>
+        <sys_mod_count>18</sys_mod_count>
+        <sys_name>ServiceNow for Slack Incident Notify</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="ServiceNow for Slack Notifications" source="x_545827_slack_std">64c662fa2f3030101d27c886f699b6f7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ServiceNow for Slack Notifications">64c662fa2f3030101d27c886f699b6f7</sys_scope>
+        <sys_update_name>sysevent_script_action_5b51396f2ffc30101d27c886f699b6ba</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-07-28 09:26:32</sys_updated_on>
+    </sysevent_script_action>
+</record_update>
