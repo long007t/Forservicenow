@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="ServiceNow for Slack Subscriptions" max_length="40" name="x_545827_slack_std_slack_subscriptions" sizeclass="10" type="collection">
+        <element label="Channel Id" mandatory="true" max_length="255" name="channel_id" type="string"/>
+        <element attributes="edge_encryption_enabled=true" default="true" label="Is Active" max_length="40" name="is_active" type="boolean"/>
+        <element label="Level" max_length="50" name="level" type="string"/>
+        <element label="Record Id" max_length="255" name="record_id" type="string"/>
+        <element label="Record Type" mandatory="true" max_length="255" name="record_type" type="string"/>
+        <element label="Slack Team Id" mandatory="true" max_length="255" name="slack_team_id" type="string"/>
+        <element label="Slack User Id" mandatory="true" max_length="255" name="slack_user_id" type="string"/>
+        <element label="Snow User Id" max_length="255" name="snow_user_id" type="string"/>
+        <element label="Subscription Type" mandatory="true" max_length="500" name="subscription_type" type="string"/>
+    </element>
+</database>

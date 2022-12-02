@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="ServiceNow for Slack Notifications Auth" max_length="40" name="x_545827_slack_std_servicenow_for_slack_notifications_auth" sizeclass="1" type="collection">
+        <element label="Api Key" mandatory="true" max_length="255" name="api_key" type="string"/>
+        <element label="Slack Team Id" mandatory="true" max_length="255" name="slack_team_id" type="string"/>
+        <element label="Slack User Id" mandatory="true" max_length="255" name="slack_user_id" type="string"/>
+    </element>
+</database>
